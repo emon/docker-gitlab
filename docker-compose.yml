@@ -28,7 +28,7 @@ services:
     - postgresql
     ports:
     - "127.0.0.1:10080:80"
-    - "10022:22"
+    - "22:22"
     volumes:
     - /srv/docker/gitlab/gitlab:/home/git/data:Z
     - ./assets:/etc/docker-gitlab
@@ -53,7 +53,7 @@ services:
 
     - GITLAB_HOST=gitlab.rd.iimc.kyoto-u.ac.jp
     - GITLAB_PORT=443
-    - GITLAB_SSH_PORT=10022
+    - GITLAB_SSH_PORT=22
     - GITLAB_RELATIVE_URL_ROOT=
     - GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alphanumeric-string
     - GITLAB_SECRETS_SECRET_KEY_BASE=long-and-random-alphanumeric-string
