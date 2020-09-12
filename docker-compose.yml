@@ -8,6 +8,11 @@ services:
     - --loglevel warning
     volumes:
     - /srv/docker/gitlab/redis:/var/lib/redis:Z
+    logging:
+      driver: "syslog"
+      options:
+        syslog-facility: "local6"
+        tag: "gitlab-redis"
 
   postgresql:
     restart: always
@@ -19,6 +24,12 @@ services:
     - DB_PASS=password
     - DB_NAME=gitlabhq_production
     - DB_EXTENSION=pg_trgm
+    logging:
+      driver: "syslog"
+      options:
+        syslog-facility: "local6"
+        tag: "gitlab-postgresql"
+
 
   gitlab:
     restart: always
@@ -157,3 +168,9 @@ services:
     - OAUTH_AZURE_API_KEY=
     - OAUTH_AZURE_API_SECRET=
     - OAUTH_AZURE_TENANT_ID=
+    logging:
+      driver: "syslog"
+      options:
+        syslog-facility: "local6"
+        tag: "gitlab-gitlab"
+
